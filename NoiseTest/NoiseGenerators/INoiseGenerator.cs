@@ -13,6 +13,6 @@ namespace NoiseTest
         /// </summary>
         /// <param name="location">The location to sample for noise</param>
         /// <returns>a value from 0..1</returns>
-        public double getValue(params double[] location);
+        double getValue(params double[] location);
     }
 }
