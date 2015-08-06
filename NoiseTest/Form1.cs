@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoiseTest.NoiseGenerators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,18 +14,17 @@ namespace NoiseTest
 {
     public partial class Form1 : Form
     {
+        private NoiseGeneratorManager mManager;
+
         public Form1()
         {
             InitializeComponent();
 
-            // Get all the INoiseGenerators in this program
-            Assembly currAsm = Assembly.GetExecutingAssembly();
-            var types = from type in currAsm.GetTypes()
-                        where typeof(INoiseGenerator).IsAssignableFrom(type)
-                        select type.Name;
-
+            mManager = new NoiseGeneratorManager();
+            mManager.Init();
+            
             // Add the discovered noise generators to the solution
-            mCbxGeneratorSelector.Items.AddRange(types.ToArray<string>());
+            mCbxGeneratorSelector.Items.AddRange(mManager.GetGeneratorNames());
         }
     }
 }
