@@ -60,7 +60,8 @@ namespace NoiseTest.NoiseGenerators
                     short noiseIn16bits = (short)((double)short.MaxValue * noiseVal);
                     byte upper = (byte)(noiseIn16bits >> 8);
                     byte lower = (byte)(noiseIn16bits & 0xff);
-                    imageBytes[x + (y * sizeY)] = noiseIn16bits;
+                    imageBytes[x + (y * sizeY)] = upper;
+                    imageBytes[x + (y * sizeY) + 1] = lower;
                 }
             }
 
