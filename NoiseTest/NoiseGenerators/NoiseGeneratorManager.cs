@@ -47,26 +47,18 @@ namespace NoiseTest.NoiseGenerators
             INoiseGenerator gen = mGenerators[generatorToUse];
 
             Bitmap bmp = new Bitmap(sizeX, sizeY);
-            BitmapData imageData = bmp.LockBits(new Rectangle(0, 0, sizeX, sizeY), ImageLockMode.WriteOnly, PixelFormat.Format16bppGrayScale);
-            IntPtr ptr = imageData.Scan0;
-            int numBytes = Math.Abs(imageData.Stride) * bmp.Height;
-            byte[] imageBytes = new byte[numBytes];
+            Graphics bitmapGfx = Graphics.FromImage(bmp);
 
             for (int x = 0; x < sizeX; x++ )
             {
                 for(int y = 0; y < sizeY; y++)
                 {
-                    double noiseVal = gen.getValue(x, y);
-                    short noiseIn16bits = (short)((double)short.MaxValue * noiseVal);
-                    byte upper = (byte)(noiseIn16bits >> 8);
-                    byte lower = (byte)(noiseIn16bits & 0xff);
-                    imageBytes[x + (y * sizeY)] = upper;
-                    imageBytes[x + (y * sizeY) + 1] = lower;
+                    double color = gen.getValue(x,y);
+                    int intColor = (int)(255.0 * color);
+                    SolidBrush coloringBrush = new SolidBrush(Color.FromArgb(intColor,intColor,intColor));
+                    bitmapGfx.FillRectangle(coloringBrush,x,y,1,1);
                 }
             }
-
-            Marshal.Copy(imageBytes, 0, ptr, numBytes);
-            bmp.UnlockBits(imageData);
 
             return bmp;
         }

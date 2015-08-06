@@ -56,6 +56,7 @@
             this.mBtnGenerateNoise.TabIndex = 2;
             this.mBtnGenerateNoise.Text = "Generate Noise";
             this.mBtnGenerateNoise.UseVisualStyleBackColor = true;
+            this.mBtnGenerateNoise.Click += new System.EventHandler(this.mBtnGenerateNoise_Click);
             // 
             // Form1
             // 

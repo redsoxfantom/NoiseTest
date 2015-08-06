@@ -24,7 +24,16 @@ namespace NoiseTest
             mManager.Init();
             
             // Add the discovered noise generators to the solution
+            mCbxGeneratorSelector.Items.Clear();
             mCbxGeneratorSelector.Items.AddRange(mManager.GetGeneratorNames());
+        }
+
+        private void mBtnGenerateNoise_Click(object sender, EventArgs e)
+        {
+            string selectedGenerator = (string)mCbxGeneratorSelector.SelectedItem;
+            Image noiseImage = mManager.GenerateNoiseImage(selectedGenerator,mDrawingPanel.Size.Width, mDrawingPanel.Size.Height);
+
+            mDrawingPanel.BackgroundImage = noiseImage;
         }
     }
 }
