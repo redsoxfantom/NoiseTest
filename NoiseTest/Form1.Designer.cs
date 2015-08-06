@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.mDrawingPanel = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // mDrawingPanel
+            // 
+            this.mDrawingPanel.Location = new System.Drawing.Point(33, 0);
+            this.mDrawingPanel.Name = "mDrawingPanel";
+            this.mDrawingPanel.Size = new System.Drawing.Size(512, 512);
+            this.mDrawingPanel.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(584, 631);
+            this.Controls.Add(this.mDrawingPanel);
+            this.Name = "Form1";
+            this.Text = "NoiseTest";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel mDrawingPanel;
     }
 }
 
