@@ -52,21 +52,21 @@ namespace NoiseTest.NoiseGenerators
             INoiseGenerator gen = mGenerators[generatorToUse];
             gen.Init();
 
-            Bitmap bmp = new Bitmap(sizeX, sizeY);
-            Graphics bitmapGfx = Graphics.FromImage(bmp);
+            Bitmap imageToDraw = new Bitmap(sizeX, sizeY);
+            Graphics bitmapGfx = Graphics.FromImage(imageToDraw);
 
-            for (int x = 0; x < sizeX; x++ )
+            for (int x = 0; x < imageToDraw.Width; x++)
             {
-                for(int y = 0; y < sizeY; y++)
+                for (int y = 0; y < imageToDraw.Height; y++)
                 {
-                    double color = gen.getValue(x,y);
+                    double color = gen.getValue(x, y);
                     int intColor = (int)(255.0 * color);
-                    SolidBrush coloringBrush = new SolidBrush(Color.FromArgb(intColor,intColor,intColor));
-                    bitmapGfx.FillRectangle(coloringBrush,x,y,1,1);
+                    SolidBrush coloringBrush = new SolidBrush(Color.FromArgb(intColor, intColor, intColor));
+                    bitmapGfx.FillRectangle(coloringBrush, x, y, 1, 1);
                 }
             }
 
-            return bmp;
+            return imageToDraw;
         }
     }
 }

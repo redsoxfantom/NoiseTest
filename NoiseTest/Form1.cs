@@ -28,10 +28,12 @@ namespace NoiseTest
             mCbxGeneratorSelector.Items.AddRange(mManager.GetGeneratorNames());
         }
 
-        private void mBtnGenerateNoise_Click(object sender, EventArgs e)
+        private async void mBtnGenerateNoise_Click(object sender, EventArgs e)
         {
             string selectedGenerator = (string)mCbxGeneratorSelector.SelectedItem;
-            Image noiseImage = mManager.GenerateNoiseImage(selectedGenerator,mDrawingPanel.Size.Width, mDrawingPanel.Size.Height);
+            int width = mDrawingPanel.Size.Width;
+            int height = mDrawingPanel.Size.Height;
+            Image noiseImage = await Task.Run<Image>(() => { return mManager.GenerateNoiseImage(selectedGenerator, width, height); });
 
             mDrawingPanel.BackgroundImage = noiseImage;
         }
