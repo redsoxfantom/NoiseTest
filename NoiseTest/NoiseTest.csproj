@@ -53,6 +53,7 @@
     <Compile Include="NoiseGenerators\INoiseGenerator.cs" />
     <Compile Include="NoiseGenerators\NoiseGeneratorManager.cs" />
     <Compile Include="NoiseGenerators\RandomGenerator.cs" />
+    <Compile Include="NoiseGenerators\SolidGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
