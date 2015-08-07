@@ -35,5 +35,12 @@ namespace NoiseTest
 
             mDrawingPanel.BackgroundImage = noiseImage;
         }
+
+        private void mCbxGeneratorSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedGenerator = (string)mCbxGeneratorSelector.SelectedItem;
+            INoiseGenerator generator = mManager.GetGenerator(selectedGenerator);
+            mGeneratorPropertyGrid.SelectedObject = generator;
+        }
     }
 }

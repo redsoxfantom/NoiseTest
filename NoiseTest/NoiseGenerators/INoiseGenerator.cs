@@ -14,5 +14,10 @@ namespace NoiseTest
         /// <param name="location">The location to sample for noise</param>
         /// <returns>a value from 0..1</returns>
         double getValue(params double[] location);
+
+        /// <summary>
+        /// Initialize the generator
+        /// </summary>
+        void Init();
     }
 }

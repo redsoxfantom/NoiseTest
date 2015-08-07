@@ -14,12 +14,17 @@ namespace NoiseTest.NoiseGenerators
 
         public RandomGenerator()
         {
-            gen = new Random();
         }
 
         public double getValue(params double[] location)
         {
             return gen.NextDouble();
+        }
+
+
+        public void Init()
+        {
+            gen = new Random(Seed);
         }
     }
 }

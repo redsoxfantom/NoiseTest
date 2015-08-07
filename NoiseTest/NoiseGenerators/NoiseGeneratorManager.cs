@@ -15,12 +15,9 @@ namespace NoiseTest.NoiseGenerators
     {
         Dictionary<string, INoiseGenerator> mGenerators;
 
-        Dictionary<string, List<PropertyInfo>> mGeneratorProperties;
-
         public NoiseGeneratorManager()
         {
             mGenerators = new Dictionary<string, INoiseGenerator>();
-            mGeneratorProperties = new Dictionary<string, List<PropertyInfo>>();
         }
 
         public void Init()
@@ -35,10 +32,6 @@ namespace NoiseTest.NoiseGenerators
             // Create and store an instance of each generator
             foreach(Type generator in types)
             {
-                var properties = generator.GetProperties();
-                mGeneratorProperties.Add(generator.Name, new List<PropertyInfo>());
-                mGeneratorProperties[generator.Name].AddRange(properties);
-
                 INoiseGenerator createdGenerator = (INoiseGenerator)Activator.CreateInstance(generator);
                 mGenerators.Add(generator.Name, createdGenerator);
             }
@@ -49,14 +42,15 @@ namespace NoiseTest.NoiseGenerators
             return mGenerators.Keys.ToArray<string>();
         }
 
-        public PropertyInfo[] GetGeneratorProperties(string generatorName)
+        public INoiseGenerator GetGenerator(string generatorName)
         {
-            return mGeneratorProperties[generatorName].ToArray<PropertyInfo>();
+            return mGenerators[generatorName];
         }
 
         public Image GenerateNoiseImage(string generatorToUse, int sizeX, int sizeY)
         {
             INoiseGenerator gen = mGenerators[generatorToUse];
+            gen.Init();
 
             Bitmap bmp = new Bitmap(sizeX, sizeY);
             Graphics bitmapGfx = Graphics.FromImage(bmp);
