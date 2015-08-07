@@ -10,6 +10,8 @@ namespace NoiseTest.NoiseGenerators
     {
         private Random gen;
 
+        public int Seed { get; set; }
+
         public RandomGenerator()
         {
             gen = new Random();

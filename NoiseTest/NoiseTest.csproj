@@ -51,7 +51,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="NoiseGenerators\INoiseGenerator.cs" />
-    <Compile Include="NoiseGenerators\NoiseGeneratorAttribute.cs" />
     <Compile Include="NoiseGenerators\NoiseGeneratorManager.cs" />
     <Compile Include="NoiseGenerators\RandomGenerator.cs" />
     <Compile Include="Program.cs" />
