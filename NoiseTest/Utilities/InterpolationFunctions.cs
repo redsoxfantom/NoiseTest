@@ -14,6 +14,8 @@ namespace NoiseTest.Utilities
             {
                 case Interpolation.LINEAR:
                     return LinearlyInterpolate(currentXVal, startYVal, endYVal);
+                case Interpolation.COSINE:
+                    return CosineInterpolate(currentXVal, startYVal, endYVal);
                 default:
                     return 0.0;
             }
@@ -22,6 +24,12 @@ namespace NoiseTest.Utilities
         private static double LinearlyInterpolate(double currentXVal, double startYVal, double endYVal)
         {
             return (1 - currentXVal) * startYVal + currentXVal * endYVal;
+        }
+
+        private static double CosineInterpolate(double currentXVal, double startYVal, double endYVal)
+        {
+            double newCurrentXVal = (1 - Math.Cos(currentXVal * Math.PI)) / 2;
+            return (startYVal * (1 - newCurrentXVal) + endYVal * newCurrentXVal);
         }
     }
 
