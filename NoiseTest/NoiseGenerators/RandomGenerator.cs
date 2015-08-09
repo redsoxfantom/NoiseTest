@@ -9,7 +9,7 @@ namespace NoiseTest.NoiseGenerators
 {
     public class RandomGenerator : INoiseGenerator
     {
-        private RandomNumberGenerator gen;
+        private Random gen;
 
         public int Seed { get; set; }
 
@@ -19,13 +19,13 @@ namespace NoiseTest.NoiseGenerators
 
         public double getValue(params double[] location)
         {
-            return gen.GetValue(location[0], location[1]);
+            return gen.NextDouble();
         }
 
 
         public void Init()
         {
-            gen = new RandomNumberGenerator(Seed);
+            gen = new Random(Seed);
         }
     }
 }

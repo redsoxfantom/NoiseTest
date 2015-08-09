@@ -15,9 +15,10 @@ namespace NoiseTest.NoiseGenerators
         public int Octaves { get; set; }
         public double Persistance { get; set; }
 
-        private RandomNumberGenerator mGen;
+        private Random gen;
         private double amplitude;
         private double mFrequency;
+        private int mRandomOffsetX, mRandomOffsetY;
 
         public double getValue(params double[] location)
         {
@@ -26,7 +27,7 @@ namespace NoiseTest.NoiseGenerators
 
             for (int i = 0; i < Octaves; i++)
             {
-                total += mGen.GetValue(x * mFrequency, y * mFrequency) * amplitude;
+                //total += RandomNumberGenerator.GetValue(x * mFrequency + mRandomOffsetX, y * mFrequency + mRandomOffsetY) * amplitude;
                 mFrequency *= 2;
                 amplitude *= Persistance;
             }
@@ -36,7 +37,9 @@ namespace NoiseTest.NoiseGenerators
 
         public void Init()
         {
-            mGen = new RandomNumberGenerator(Seed);
+            gen = new Random(Seed);
+            mRandomOffsetX = gen.Next();
+            mRandomOffsetY = gen.Next();
             amplitude = Persistance;
             mFrequency = Frequency;
         }

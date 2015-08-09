@@ -8,34 +8,11 @@ namespace NoiseTest.Utilities
 {
     public class RandomNumberGenerator
     {
-        private Random mGen;
-        private Dictionary<Tuple<double, double>, double> mCachedValues;
-
-        public RandomNumberGenerator(int seed)
+        public static double GetValue(int x, int y)
         {
-            mGen = new Random(seed);
-            mCachedValues = new Dictionary<Tuple<double, double>, double>();
-        }
-
-        public RandomNumberGenerator()
-        {
-            mGen = new Random();
-            mCachedValues = new Dictionary<Tuple<double, double>, double>();
-        }
-
-        public double GetValue(double x, double y)
-        {
-            Tuple<double, double> newKey = new Tuple<double, double>(x, y);
-            if(mCachedValues.ContainsKey(newKey))
-            {
-                return mCachedValues[newKey];
-            }
-            else
-            {
-                double valToReturn = mGen.NextDouble();
-                mCachedValues.Add(newKey, valToReturn);
-                return valToReturn;
-            }
+            int n = x + y * 57;
+            n = (int)Math.Pow((double)(n << 13), (double)n);
+            return Math.Abs( 1.0 - ( (n * (n * n * 15731 + 789221) + 1376312589) & 0x7fffffff) / 1073741824.0);
         }
     }
 }
