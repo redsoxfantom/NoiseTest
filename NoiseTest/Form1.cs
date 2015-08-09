@@ -19,6 +19,7 @@ namespace NoiseTest
         private Stopwatch mTimer;
         private double mStopwatchTicksPerMs;
         private bool mStopwatchIsHiRes;
+        private IProgress<int> progressReporter;
 
         public Form1()
         {
@@ -31,6 +32,13 @@ namespace NoiseTest
 
             mManager = new NoiseGeneratorManager();
             mManager.Init();
+
+            progressReporter = new Progress<int>(newProgress =>
+            {
+                mTaskProgress.Value = newProgress;
+            });
+            this.mTaskProgress.Minimum = 0;
+            this.mTaskProgress.Maximum = mDrawingPanel.Size.Height * mDrawingPanel.Size.Width;
             
             // Add the discovered noise generators to the solution
             mCbxGeneratorSelector.Items.Clear();
@@ -44,8 +52,8 @@ namespace NoiseTest
             string selectedGenerator = (string)mCbxGeneratorSelector.SelectedItem;
             int width = mDrawingPanel.Size.Width;
             int height = mDrawingPanel.Size.Height;
-            
-            Image noiseImage = await Task.Run<Image>(() => { return mManager.GenerateNoiseImage(selectedGenerator, width, height); });
+
+            Image noiseImage = await Task.Run<Image>(() => { return mManager.GenerateNoiseImage(selectedGenerator, width, height, progressReporter); });
 
             mDrawingPanel.BackgroundImage = noiseImage;
             mTimer.Stop();

@@ -33,6 +33,7 @@
             this.mBtnGenerateNoise = new System.Windows.Forms.Button();
             this.mGeneratorPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.mInfoLabel = new System.Windows.Forms.Label();
+            this.mTaskProgress = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // mDrawingPanel
@@ -78,11 +79,19 @@
             this.mInfoLabel.TabIndex = 4;
             this.mInfoLabel.Text = "Waiting for input...";
             // 
+            // mTaskProgress
+            // 
+            this.mTaskProgress.Location = new System.Drawing.Point(8, 535);
+            this.mTaskProgress.Name = "mTaskProgress";
+            this.mTaskProgress.Size = new System.Drawing.Size(798, 23);
+            this.mTaskProgress.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 537);
+            this.ClientSize = new System.Drawing.Size(818, 562);
+            this.Controls.Add(this.mTaskProgress);
             this.Controls.Add(this.mInfoLabel);
             this.Controls.Add(this.mGeneratorPropertyGrid);
             this.Controls.Add(this.mBtnGenerateNoise);
@@ -103,6 +112,7 @@
         private System.Windows.Forms.Button mBtnGenerateNoise;
         private System.Windows.Forms.PropertyGrid mGeneratorPropertyGrid;
         private System.Windows.Forms.Label mInfoLabel;
+        private System.Windows.Forms.ProgressBar mTaskProgress;
     }
 }
 
