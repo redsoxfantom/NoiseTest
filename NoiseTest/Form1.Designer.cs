@@ -32,11 +32,12 @@
             this.mCbxGeneratorSelector = new System.Windows.Forms.ComboBox();
             this.mBtnGenerateNoise = new System.Windows.Forms.Button();
             this.mGeneratorPropertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.mInfoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mDrawingPanel
             // 
-            this.mDrawingPanel.Location = new System.Drawing.Point(33, 0);
+            this.mDrawingPanel.Location = new System.Drawing.Point(12, 4);
             this.mDrawingPanel.Name = "mDrawingPanel";
             this.mDrawingPanel.Size = new System.Drawing.Size(512, 512);
             this.mDrawingPanel.TabIndex = 0;
@@ -44,7 +45,7 @@
             // mCbxGeneratorSelector
             // 
             this.mCbxGeneratorSelector.FormattingEnabled = true;
-            this.mCbxGeneratorSelector.Location = new System.Drawing.Point(551, 12);
+            this.mCbxGeneratorSelector.Location = new System.Drawing.Point(530, 12);
             this.mCbxGeneratorSelector.Name = "mCbxGeneratorSelector";
             this.mCbxGeneratorSelector.Size = new System.Drawing.Size(170, 21);
             this.mCbxGeneratorSelector.TabIndex = 1;
@@ -52,7 +53,7 @@
             // 
             // mBtnGenerateNoise
             // 
-            this.mBtnGenerateNoise.Location = new System.Drawing.Point(727, 10);
+            this.mBtnGenerateNoise.Location = new System.Drawing.Point(706, 10);
             this.mBtnGenerateNoise.Name = "mBtnGenerateNoise";
             this.mBtnGenerateNoise.Size = new System.Drawing.Size(104, 23);
             this.mBtnGenerateNoise.TabIndex = 2;
@@ -62,23 +63,36 @@
             // 
             // mGeneratorPropertyGrid
             // 
-            this.mGeneratorPropertyGrid.Location = new System.Drawing.Point(552, 40);
+            this.mGeneratorPropertyGrid.Location = new System.Drawing.Point(531, 40);
             this.mGeneratorPropertyGrid.Name = "mGeneratorPropertyGrid";
             this.mGeneratorPropertyGrid.Size = new System.Drawing.Size(279, 472);
             this.mGeneratorPropertyGrid.TabIndex = 3;
+            // 
+            // mInfoLabel
+            // 
+            this.mInfoLabel.AutoSize = true;
+            this.mInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mInfoLabel.Location = new System.Drawing.Point(9, 519);
+            this.mInfoLabel.Name = "mInfoLabel";
+            this.mInfoLabel.Size = new System.Drawing.Size(113, 13);
+            this.mInfoLabel.TabIndex = 4;
+            this.mInfoLabel.Text = "Waiting for input...";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 519);
+            this.ClientSize = new System.Drawing.Size(818, 537);
+            this.Controls.Add(this.mInfoLabel);
             this.Controls.Add(this.mGeneratorPropertyGrid);
             this.Controls.Add(this.mBtnGenerateNoise);
             this.Controls.Add(this.mCbxGeneratorSelector);
             this.Controls.Add(this.mDrawingPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "NoiseTest";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -88,6 +102,7 @@
         private System.Windows.Forms.ComboBox mCbxGeneratorSelector;
         private System.Windows.Forms.Button mBtnGenerateNoise;
         private System.Windows.Forms.PropertyGrid mGeneratorPropertyGrid;
+        private System.Windows.Forms.Label mInfoLabel;
     }
 }
 
