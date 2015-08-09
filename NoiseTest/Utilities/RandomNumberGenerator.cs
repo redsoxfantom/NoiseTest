@@ -9,23 +9,23 @@ namespace NoiseTest.Utilities
     public class RandomNumberGenerator
     {
         private Random mGen;
-        private Dictionary<Tuple<int, int>, double> mCachedValues;
+        private Dictionary<Tuple<double, double>, double> mCachedValues;
 
         public RandomNumberGenerator(int seed)
         {
             mGen = new Random(seed);
-            mCachedValues = new Dictionary<Tuple<int, int>, double>();
+            mCachedValues = new Dictionary<Tuple<double, double>, double>();
         }
 
         public RandomNumberGenerator()
         {
             mGen = new Random();
-            mCachedValues = new Dictionary<Tuple<int, int>, double>();
+            mCachedValues = new Dictionary<Tuple<double, double>, double>();
         }
 
-        public double GetValue(int x, int y)
+        public double GetValue(double x, double y)
         {
-            Tuple<int,int> newKey = new Tuple<int,int>(x,y);
+            Tuple<double, double> newKey = new Tuple<double, double>(x, y);
             if(mCachedValues.ContainsKey(newKey))
             {
                 return mCachedValues[newKey];

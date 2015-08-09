@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoiseTest.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace NoiseTest.NoiseGenerators
 {
     public class RandomGenerator : INoiseGenerator
     {
-        private Random gen;
+        private RandomNumberGenerator gen;
 
         public int Seed { get; set; }
 
@@ -18,13 +19,13 @@ namespace NoiseTest.NoiseGenerators
 
         public double getValue(params double[] location)
         {
-            return gen.NextDouble();
+            return gen.GetValue(location[0], location[1]);
         }
 
 
         public void Init()
         {
-            gen = new Random(Seed);
+            gen = new RandomNumberGenerator(Seed);
         }
     }
 }
