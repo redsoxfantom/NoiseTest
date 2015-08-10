@@ -67,5 +67,25 @@ namespace NoiseTest
             INoiseGenerator generator = mManager.GetGenerator(selectedGenerator);
             mGeneratorPropertyGrid.SelectedObject = generator;
         }
+
+        private void toNewFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toCurrentlyLoadedFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadNewConfigFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadConfigFromCurrentFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

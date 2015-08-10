@@ -37,9 +37,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCurrentConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadConfigFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toNewFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toCurrentlyLoadedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadConfigFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadNewConfigFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadConfigFromCurrentFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,23 +123,42 @@
             this.saveCurrentConfigToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveCurrentConfigToolStripMenuItem.Text = "Save Current Config";
             // 
-            // loadConfigFileToolStripMenuItem
-            // 
-            this.loadConfigFileToolStripMenuItem.Name = "loadConfigFileToolStripMenuItem";
-            this.loadConfigFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadConfigFileToolStripMenuItem.Text = "Load Config File";
-            // 
             // toNewFileToolStripMenuItem
             // 
             this.toNewFileToolStripMenuItem.Name = "toNewFileToolStripMenuItem";
             this.toNewFileToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.toNewFileToolStripMenuItem.Text = "To New File";
+            this.toNewFileToolStripMenuItem.Click += new System.EventHandler(this.toNewFileToolStripMenuItem_Click);
             // 
             // toCurrentlyLoadedFileToolStripMenuItem
             // 
             this.toCurrentlyLoadedFileToolStripMenuItem.Name = "toCurrentlyLoadedFileToolStripMenuItem";
             this.toCurrentlyLoadedFileToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.toCurrentlyLoadedFileToolStripMenuItem.Text = "To Currently Loaded File";
+            this.toCurrentlyLoadedFileToolStripMenuItem.Click += new System.EventHandler(this.toCurrentlyLoadedFileToolStripMenuItem_Click);
+            // 
+            // loadConfigFileToolStripMenuItem
+            // 
+            this.loadConfigFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadNewConfigFileToolStripMenuItem,
+            this.loadConfigFromCurrentFileToolStripMenuItem});
+            this.loadConfigFileToolStripMenuItem.Name = "loadConfigFileToolStripMenuItem";
+            this.loadConfigFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadConfigFileToolStripMenuItem.Text = "Load Config";
+            // 
+            // loadNewConfigFileToolStripMenuItem
+            // 
+            this.loadNewConfigFileToolStripMenuItem.Name = "loadNewConfigFileToolStripMenuItem";
+            this.loadNewConfigFileToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.loadNewConfigFileToolStripMenuItem.Text = "Load New Config File";
+            this.loadNewConfigFileToolStripMenuItem.Click += new System.EventHandler(this.loadNewConfigFileToolStripMenuItem_Click);
+            // 
+            // loadConfigFromCurrentFileToolStripMenuItem
+            // 
+            this.loadConfigFromCurrentFileToolStripMenuItem.Name = "loadConfigFromCurrentFileToolStripMenuItem";
+            this.loadConfigFromCurrentFileToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.loadConfigFromCurrentFileToolStripMenuItem.Text = "Load Config From Current File";
+            this.loadConfigFromCurrentFileToolStripMenuItem.Click += new System.EventHandler(this.loadConfigFromCurrentFileToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -176,6 +197,8 @@
         private System.Windows.Forms.ToolStripMenuItem loadConfigFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toNewFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toCurrentlyLoadedFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadNewConfigFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadConfigFromCurrentFileToolStripMenuItem;
     }
 }
 
