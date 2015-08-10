@@ -54,7 +54,7 @@ namespace NoiseTest.NoiseGenerators
 
             Bitmap imageToDraw = new Bitmap(sizeX, sizeY);
             Graphics bitmapGfx = Graphics.FromImage(imageToDraw);
-            int count = 0;
+            int totalIterations = sizeX * sizeY;
 
             for (int x = 0; x < imageToDraw.Width; x++)
             {
@@ -64,10 +64,10 @@ namespace NoiseTest.NoiseGenerators
                     int intColor = (int)(255.0 * color);
                     SolidBrush coloringBrush = new SolidBrush(Color.FromArgb(intColor, intColor, intColor));
                     bitmapGfx.FillRectangle(coloringBrush, x, y, 1, 1);
-
-                    count++;
                 }
-                progressReporter.Report(count);
+
+                int workDone = (int)(((double)(sizeX * (x+1))/(double)totalIterations) * 100.0);
+                progressReporter.Report(workDone);
             }
 
             return imageToDraw;

@@ -37,8 +37,6 @@ namespace NoiseTest
             {
                 mTaskProgress.Value = newProgress;
             });
-            this.mTaskProgress.Minimum = 0;
-            this.mTaskProgress.Maximum = mDrawingPanel.Size.Height * mDrawingPanel.Size.Width;
             
             // Add the discovered noise generators to the solution
             mCbxGeneratorSelector.Items.Clear();
