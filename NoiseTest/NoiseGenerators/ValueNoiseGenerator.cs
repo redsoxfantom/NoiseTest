@@ -67,14 +67,22 @@ namespace NoiseTest.NoiseGenerators
                 amplitude *= Persistance;
             }
 
-            return total > 1.0 ? 1.0 : total;
+            if(total < 0.0)
+            {
+                total = 0.0;
+            }
+            if(total > 1.0)
+            {
+                total = 1.0;
+            }
+            return total;
         }
 
         public void Init()
         {
             gen = new Random(Seed);
-            mRandomOffsetX = gen.Next();
-            mRandomOffsetY = gen.Next();
+            mRandomOffsetX = gen.Next(100000);
+            mRandomOffsetY = gen.Next(100000);
             amplitude = Persistance;
             mFrequency = Frequency;
         }
