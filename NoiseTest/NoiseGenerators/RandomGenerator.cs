@@ -2,28 +2,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NoiseTest.NoiseGenerators
 {
-    public class RandomGenerator : INoiseGenerator
+    [DataContract(Name="RandomGenerator")]
+    public class RandomGenerator : BaseNoiseGenerator
     {
         private Random gen;
 
+        [DataMember(Name="Seed")]
         public int Seed { get; set; }
 
         public RandomGenerator()
         {
         }
 
-        public double getValue(params double[] location)
+        public override double getValue(params double[] location)
         {
             return gen.NextDouble();
         }
 
 
-        public void Init()
+        public override void Init()
         {
             gen = new Random(Seed);
         }

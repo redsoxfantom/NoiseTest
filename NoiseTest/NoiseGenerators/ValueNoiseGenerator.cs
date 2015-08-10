@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoiseTest.NoiseGenerators
 {
-    public class ValueNoiseGenerator : INoiseGenerator
+    public class ValueNoiseGenerator : BaseNoiseGenerator
     {
         public Interpolation InterpolationToUse { get; set; }
         public int Seed { get; set; }
@@ -55,7 +55,7 @@ namespace NoiseTest.NoiseGenerators
             return InterpolationFunctions.Interpolate(InterpolationToUse, i1, i2, fractY, i3, i4);
         }
 
-        public double getValue(params double[] location)
+        public override double getValue(params double[] location)
         {
             double total = 0.0;
             double x = location[0], y = location[1];
@@ -78,7 +78,7 @@ namespace NoiseTest.NoiseGenerators
             return total;
         }
 
-        public void Init()
+        public override void Init()
         {
             gen = new Random(Seed);
             mRandomOffsetX = gen.Next(100000);

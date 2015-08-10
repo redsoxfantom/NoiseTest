@@ -25,7 +25,8 @@ namespace NoiseTest.NoiseGenerators
             // Get all the INoiseGenerators in this program
             Assembly currAsm = Assembly.GetExecutingAssembly();
             var types = from type in currAsm.GetTypes()
-                        where typeof(INoiseGenerator).IsAssignableFrom(type)
+                        where typeof(BaseNoiseGenerator).IsAssignableFrom(type)
+                        where !type.IsAbstract
                         where !type.IsInterface
                         select type;
 
