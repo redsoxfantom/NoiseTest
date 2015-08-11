@@ -41,6 +41,7 @@ namespace NoiseTest
             // Add the discovered noise generators to the solution
             mCbxGeneratorSelector.Items.Clear();
             mCbxGeneratorSelector.Items.AddRange(mManager.GetGeneratorNames());
+            mCbxGeneratorSelector.SelectedIndex = 0;
         }
 
         private async void mBtnGenerateNoise_Click(object sender, EventArgs e)
