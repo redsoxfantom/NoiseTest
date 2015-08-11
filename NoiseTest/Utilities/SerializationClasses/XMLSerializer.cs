@@ -20,13 +20,16 @@ namespace NoiseTest.Utilities.SerializationClasses
         public static T DeserializeObject<T>(string path)
         {
             T obj;
-            FileStream fs = new FileStream(path, FileMode.Open);
-            XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
-            DataContractSerializer ser = new DataContractSerializer(typeof(T));
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                using (XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas()))
+                {
+                    DataContractSerializer ser = new DataContractSerializer(typeof(T));
 
-            // Deserialize the data and read it from the instance.
-            obj = (T)ser.ReadObject(reader);
-            reader.Close();
+                    // Deserialize the data and read it from the instance.
+                    obj = (T)ser.ReadObject(reader);
+                }
+            }
             return obj;
         }
 
@@ -38,13 +41,16 @@ namespace NoiseTest.Utilities.SerializationClasses
         /// <param name="obj">The object to serialize</param>
         public static void SerializeObject<T>(string path, T obj)
         {
-            FileStream fs = new FileStream(path, FileMode.Create);
-            XmlDictionaryWriter writer = XmlDictionaryWriter.CreateTextWriter(fs);
-            DataContractSerializer ser = new DataContractSerializer(typeof(T));
+            using (FileStream fs = new FileStream(path, FileMode.Create))
+            {
+                using (XmlDictionaryWriter writer = XmlDictionaryWriter.CreateTextWriter(fs))
+                {
+                    DataContractSerializer ser = new DataContractSerializer(typeof(T));
 
-            //Serialize the data to a file
-            ser.WriteObject(writer, obj);
-            writer.Close();
+                    //Serialize the data to a file
+                    ser.WriteObject(writer, obj);
+                }
+            }
         }
     }
 }
