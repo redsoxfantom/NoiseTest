@@ -62,6 +62,7 @@
     <Compile Include="Utilities\InterpolationFunctions.cs" />
     <Compile Include="Utilities\RandomNumberGenerator.cs" />
     <Compile Include="Utilities\SerializationClasses\NoiseGeneratorDict.cs" />
+    <Compile Include="Utilities\SerializationClasses\XMLSerializer.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
