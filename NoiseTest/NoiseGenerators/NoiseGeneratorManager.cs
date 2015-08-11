@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoiseTest.Utilities.SerializationClasses;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -14,10 +15,12 @@ namespace NoiseTest.NoiseGenerators
     public class NoiseGeneratorManager
     {
         Dictionary<string, INoiseGenerator> mGenerators;
+        NoiseGeneratorDict mLoadedGenerators = new NoiseGeneratorDict();
 
         public NoiseGeneratorManager()
         {
             mGenerators = new Dictionary<string, INoiseGenerator>();
+            mLoadedGenerators = new NoiseGeneratorDict();
         }
 
         public void Init()
@@ -35,6 +38,44 @@ namespace NoiseTest.NoiseGenerators
             {
                 INoiseGenerator createdGenerator = (INoiseGenerator)Activator.CreateInstance(generator);
                 mGenerators.Add(generator.Name, createdGenerator);
+            }
+        }
+
+        public bool LoadGeneratorFile(string filename)
+        {
+            try
+            {
+                mLoadedGenerators = XMLSerializer.DeserializeObject<NoiseGeneratorDict>(filename);
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public bool AddGeneratorToLoadedGenerators(INoiseGenerator generator)
+        {
+            if(mLoadedGenerators.ContainsKey(generator.Name))
+            {
+                return false;
+            }
+            mLoadedGenerators.Add(generator.Name, generator);
+            return true;
+        }
+
+        public bool SaveGeneratorsToFile(string filename)
+        {
+            try
+            {
+                XMLSerializer.SerializeObject<NoiseGeneratorDict>(filename, mLoadedGenerators);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
             }
         }
 

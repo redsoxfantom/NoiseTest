@@ -9,6 +9,12 @@ namespace NoiseTest
     public interface INoiseGenerator
     {
         /// <summary>
+        /// The name of the generator.
+        /// Used for serialization / deserialization
+        /// </summary>
+        string Name { get; set; }
+
+        /// <summary>
         /// Get the noise at a particular location
         /// </summary>
         /// <param name="location">The location to sample for noise</param>

@@ -76,7 +76,8 @@ namespace NoiseTest
 
         private void toCurrentlyLoadedFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string selectedGenerator = (string)mCbxGeneratorSelector.SelectedItem;
+            mManager.AddGeneratorToLoadedGenerators(mManager.GetGenerator(selectedGenerator));
         }
 
         private void loadNewConfigFileToolStripMenuItem_Click(object sender, EventArgs e)
