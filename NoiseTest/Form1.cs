@@ -71,7 +71,14 @@ namespace NoiseTest
 
         private void toNewFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveFileDialog sfv = new SaveFileDialog();
+            sfv.Filter = "xml files (*.xml)|*.xml";
+            sfv.RestoreDirectory = true;
 
+            if(sfv.ShowDialog() == DialogResult.OK)
+            {
+                mManager.SaveGeneratorsToFile(sfv.FileName);
+            }
         }
 
         private void toCurrentlyLoadedFileToolStripMenuItem_Click(object sender, EventArgs e)

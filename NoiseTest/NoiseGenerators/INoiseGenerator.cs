@@ -15,6 +15,11 @@ namespace NoiseTest
         string Name { get; set; }
 
         /// <summary>
+        /// The Type of this object
+        /// </summary>
+        string Assembly { get; }
+
+        /// <summary>
         /// Get the noise at a particular location
         /// </summary>
         /// <param name="location">The location to sample for noise</param>
